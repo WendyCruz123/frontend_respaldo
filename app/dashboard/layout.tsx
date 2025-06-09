@@ -13,23 +13,23 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   return (
     <Providers>
       <SidebarContext.Provider value={{ collapsed, toggleSidebar }}>
-        <div className="flex h-screen w-screen overflow-hidden relative">
+        <div className="relative w-full min-h-screen overflow-x-hidden">
 
-          {/* Video background */}
+          {/* Video background que cubre todo el contenido, no solo el viewport */}
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="absolute top-0 left-0 w-full h-full object-cover z-0"
+            className="fixed top-0 left-0 w-full h-full object-cover z-0"
           >
             <source src="/login-bg.mp4" type="video/mp4" />
           </video>
 
-          {/* Content overlay */}
-          <div className="relative z-10 flex flex-1">
+          {/* Contenido superpuesto */}
+          <div className="relative z-10 flex min-h-screen">
             <SidebarWrapper />
-            <main className="flex-1 min-h-screen p-4 bg-white/50 backdrop-blur-sm">
+            <main className="flex-1 p-4 bg-white/50 backdrop-blur-sm">
               {children}
             </main>
           </div>
