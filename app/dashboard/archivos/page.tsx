@@ -9,6 +9,7 @@ import {
   FileTextIcon,
 } from 'lucide-react';
 import API from '@/lib/axios';
+import ModalEditarArchivo from '@/components/ModalEditarArchivo'; // <--- IMPORTANTE
 
 interface Archivo {
   id: string;
@@ -26,6 +27,10 @@ interface Archivo {
       nombres: string;
       paterno: string;
     } | null;
+    tipo_respaldo?: {
+      id: string;
+      nombre: string;
+    } | null;
   } | null;
 }
 
@@ -41,16 +46,20 @@ export default function ListaArchivosPage() {
   const [archivoAEliminar, setArchivoAEliminar] = useState<Archivo | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  useEffect(() => {
-    const fetchArchivos = async () => {
-      try {
-        const res = await API.get('/archivos');
-        setArchivos(res.data.data.rows);
-      } catch (error) {
-        console.error('Error al obtener archivos:', error);
-      }
-    };
+  // Estado para el modal de editar
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [archivoAEditar, setArchivoAEditar] = useState<any>(null);
 
+  const fetchArchivos = async () => {
+    try {
+      const res = await API.get('/archivos');
+      setArchivos(res.data.data.rows);
+    } catch (error) {
+      console.error('Error al obtener archivos:', error);
+    }
+  };
+
+  useEffect(() => {
     fetchArchivos();
   }, []);
 
@@ -154,7 +163,14 @@ export default function ListaArchivosPage() {
                 </td>
                 <td className="py-2 px-4">
                   <div className="flex justify-center items-center gap-2">
-                    <PencilIcon className="cursor-pointer" size={18} />
+                    <PencilIcon
+                      className="cursor-pointer"
+                      size={18}
+                      onClick={() => {
+                        setArchivoAEditar(archivo);
+                        setShowEditModal(true);
+                      }}
+                    />
                     <TrashIcon
                       className="cursor-pointer text-red-500"
                       size={18}
@@ -200,6 +216,19 @@ export default function ListaArchivosPage() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Modal de Editar */}
+      {showEditModal && (
+        <ModalEditarArchivo
+          isOpen={showEditModal}
+          onClose={() => setShowEditModal(false)}
+          archivo={archivoAEditar}
+          onUpdate={() => {
+            setShowEditModal(false);
+            fetchArchivos();
+          }}
+        />
       )}
     </div>
   );
