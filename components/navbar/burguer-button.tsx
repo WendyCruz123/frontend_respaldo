@@ -8,7 +8,7 @@ export const BurguerButton = () => {
   return (
     <button
       onClick={toggleSidebar}
-      className="text-white p-2 hover:bg-gray-700 rounded-md absolute top-4 left-4 z-50"
+      className="text-cyan-50 p-2 hover:bg-gray-700 rounded-md absolute top-4 left-4 z-50"
     >
       <Menu className="w-6 h-6" />
     </button>

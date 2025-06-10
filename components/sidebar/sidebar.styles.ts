@@ -3,7 +3,7 @@ import { tv } from "@nextui-org/react";
 export const SidebarWrapper = tv({
   base:[ "transition-all h-screen bg-background border-r border-divider z-[202] overflow-y-auto flex flex-col py-6 px-3",
   // // Color adaptable a modo claro/oscuro
-  "bg-blue-900 text-white dark:bg-[#1e1e2f] dark:text-white"],
+  "bg-blue-500 text-white dark:bg-[#1e1e2f] dark:text-white"],
     variants: {
     collapsed: {
       true: "w-16",           // Solo íconos
