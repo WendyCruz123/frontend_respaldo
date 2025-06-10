@@ -111,9 +111,10 @@ export default function ListaArchivosPage() {
   return (
     <div className="p-6 rounded-lg max-w-6xl mx-auto">
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-xl font-bold">Listado de Archivos PDF</h1>
-        <Input
-          className="w-72"
+        <h1 className="text-xl font-bold">LISTA DE ARCHIVOS</h1>
+      </div>
+      <Input
+          className="mb-4"
           placeholder="Buscar por nombre o CI..."
           startContent={<SearchIcon size={18} />}
           value={search}
@@ -121,13 +122,13 @@ export default function ListaArchivosPage() {
             setSearch(e.target.value);
             setCurrentPage(1);
           }}
+          
         />
-      </div>
 
       <div className="overflow-auto rounded-lg">
         <table className="w-full table-fixed border-collapse text-left">
           <thead>
-            <tr className="bg-default-100 text-sm font-semibold">
+            <tr className="bg-blue-500 dark:bg-[#1e1e2f] text-sm font-semibold">
               <th className="py-2 px-4">Usuario</th>
               <th className="py-2 px-4">CI</th>
               <th className="py-2 px-4">Descripción</th>

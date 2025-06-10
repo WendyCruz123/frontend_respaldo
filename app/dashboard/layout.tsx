@@ -31,7 +31,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <NavbarWrapper>
               <div className="flex flex-1">
                 <SidebarWrapper />
-                <main className="flex-1 p-4 bg-white/50 backdrop-blur-sm">
+                <main className="flex-1 p-4 bg-white/30 dark:bg-black/40 backdrop-blur-sm">
                   {children}
                 </main>
               </div>

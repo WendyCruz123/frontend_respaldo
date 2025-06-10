@@ -3,13 +3,13 @@
 import React from "react";
 
 export const Content = () => (
-  <div className="relative w-full h-screen overflow-hidden">
+  <div className="relative w-full min-h-screen overflow-x-hidden">
     <video
       autoPlay
       loop
       muted
       playsInline
-      className="absolute top-0 left-0 w-full h-full object-cover z-0"
+      className="fixed top-0 left-0 w-full h-full object-cover z-0"
     >
       <source src="/login-bg.mp4" type="video/mp4" />
     </video>

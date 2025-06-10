@@ -6,6 +6,7 @@ import {
   Button, Input
 } from '@nextui-org/react';
 import CrearUsuarioModal from '@/app/dashboard/registro/CrearUsuarioModal';
+import { SearchIcon } from 'lucide-react';
 
 
 export default function UsuariosRegistrados() {
@@ -46,6 +47,7 @@ export default function UsuariosRegistrados() {
 
       <Input
         placeholder="Buscar usuario"
+        startContent={<SearchIcon size={18} />}
         value={busqueda}
         onChange={(e) => setBusqueda(e.target.value)}
         className="mb-4"
@@ -54,10 +56,10 @@ export default function UsuariosRegistrados() {
       <div className="overflow-auto rounded-lg">
         <table className="min-w-full text-left">
           <thead>
-            <tr className="bg-default-100">
+            <tr className="bg-blue-500 dark:bg-[#1e1e2f] text-sm font-semibold">
               <th className="py-2 px-4">Nombre</th>
-              <th className="py-2 px-4">Tipo</th>
-              <th className="py-2 px-4">Unidad</th>
+              <th className="py-2 px-4">Cedula de Identidad</th>
+              <th className="py-2 px-4">Celular</th>
               <th className="py-2 px-4">Acciones</th>
             </tr>
           </thead>
@@ -66,10 +68,10 @@ export default function UsuariosRegistrados() {
               <tr key={persona.id} className="border-b">
                 <td className="py-2 px-4">
                   <div className="font-bold">{persona.paterno} {persona.materno} {persona.nombres}</div>
-                  <div className="text-sm text-gray-500">{persona.correo}</div>
+                  <div className="text-sm font-mono">{persona.correo}</div>
                 </td>
-                <td className="py-2 px-4">{persona.tipo_personal}</td>
-                <td className="py-2 px-4">{persona.nombre_unidad}</td>
+                <td className="py-2 px-4">{persona.ci}</td>
+                <td className="py-2 px-4">{persona.celular}</td>
                 <td className="py-2 px-4 space-x-2">👁️ ✏️ 🗑️</td>
               </tr>
             ))}
