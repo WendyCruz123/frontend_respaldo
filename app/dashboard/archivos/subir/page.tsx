@@ -31,7 +31,7 @@ export default function SubirArchivoPage() {
 
   useEffect(() => {
     const fetchPersonas = async () => {
-      if (ci.length >= 3) {
+      if (ci.length >= 1) {
         try {
           const res = await API.get('/persona', { params: { search: ci } });
           setPersonas(res.data.data.rows);
@@ -169,7 +169,7 @@ export default function SubirArchivoPage() {
         ))}
       </ul>
     )}
-    {noEncontrado && ci.length >= 4 && (
+    {noEncontrado && ci.length >=4 && (
       <Button color="danger" className="mt-2 w-full" onClick={() => setMostrarModalRegistro(true)}>
         Registrar nuevo usuario
       </Button>
