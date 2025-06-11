@@ -5,10 +5,10 @@ import { Input, Button } from '@nextui-org/react';
 import {
   SearchIcon,
   PencilIcon,
-  TrashIcon,
 } from 'lucide-react';
 import API from '@/lib/axios';
-import CrearUsuarioModal from '@/app/dashboard/registro/CrearUsuarioModal'; // ✅ Import correcto
+import CrearUsuarioModal from '@/app/dashboard/registro/CrearUsuarioModal';
+import ModalEditarUsuario from '@/components/ModalEditarUsuario'; // Importar Modal Editar
 
 interface Persona {
   id: string;
@@ -18,6 +18,7 @@ interface Persona {
   celular: string;
   correo: string;
   users: {
+    id: string;
     email: string;
     roles: string[] | string;
   }[];
@@ -32,6 +33,10 @@ export default function ListaUsuariosPage() {
 
   // Estado del modal Crear Usuario
   const [showModalCrearUsuario, setShowModalCrearUsuario] = useState(false);
+
+  // Estado del modal Editar Usuario
+  const [showModalEditarUsuario, setShowModalEditarUsuario] = useState(false);
+  const [usuarioAEditar, setUsuarioAEditar] = useState<Persona | null>(null);
 
   const fetchUsuarios = async () => {
     try {
@@ -106,7 +111,7 @@ export default function ListaUsuariosPage() {
               <th className="py-2 px-4">CI</th>
               <th className="py-2 px-4">Celular</th>
               <th className="py-2 px-4">Rol</th>
-              <th className="py-2 px-4 w-[120px] text-center">Acciones</th>
+              <th className="py-2 px-4 w-[80px] text-center">Acciones</th>
             </tr>
           </thead>
           <tbody>
@@ -130,13 +135,16 @@ export default function ListaUsuariosPage() {
                     <PencilIcon
                       className="cursor-pointer"
                       size={18}
-                      onClick={() => alert(`Editar usuario ${persona.nombres}`)}
+                      onClick={() => {
+                        setUsuarioAEditar(persona);
+                        setShowModalEditarUsuario(true);
+                      }}
                     />
-                    <TrashIcon
+                    {/* <TrashIcon
                       className="cursor-pointer text-red-500"
                       size={18}
                       onClick={() => alert(`Eliminar usuario ${persona.nombres}`)}
-                    />
+                    /> */}
                   </div>
                 </td>
               </tr>
@@ -170,6 +178,19 @@ export default function ListaUsuariosPage() {
             setShowModalCrearUsuario(false);
             fetchUsuarios(); // refresca la lista cuando se cierra el modal
           }}
+        />
+      )}
+
+      {/* Modal Editar Usuario */}
+      {showModalEditarUsuario && usuarioAEditar && (
+        <ModalEditarUsuario
+          isOpen={showModalEditarUsuario}
+          onClose={() => {
+            setShowModalEditarUsuario(false);
+            setUsuarioAEditar(null);
+            fetchUsuarios(); // refresca lista después de editar
+          }}
+          usuario={usuarioAEditar}
         />
       )}
     </div>
