@@ -152,7 +152,7 @@ export default function SubirArchivoPage() {
       value={ci}
       onChange={(e) => setCi(e.target.value)}
       classNames={{
-        inputWrapper: "bg-[#e0e0e0] dark:bg-[#1e1e1e]",
+        inputWrapper: "bg-blue-100 dark:bg-neutral-500",
         input: "text-black dark:text-white placeholder-gray-500"
       }}
     />
@@ -182,7 +182,7 @@ export default function SubirArchivoPage() {
       value={descripcion}
       onChange={(e) => setDescripcion(e.target.value)}
       classNames={{
-        inputWrapper: "bg-[#e0e0e0] dark:bg-[#1e1e1e]",
+        inputWrapper: "bg-blue-100 dark:bg-neutral-500",
         input: "text-black dark:text-white placeholder-gray-500"
       }}
     />
@@ -193,7 +193,7 @@ export default function SubirArchivoPage() {
     <select
       value={tipoRespaldo}
       onChange={(e) => setTipoRespaldo(e.target.value)}
-      className="w-full p-2 rounded-md bg-[#e0e0e0] dark:bg-[#1e1e1e] text-black dark:text-white border dark:border-gray-700"
+      className="w-full p-2 rounded-md bg-blue-100 dark:bg-neutral-500 text-black dark:text-white border dark:border-gray-700"
     >
       <option value="">Selecciona un tipo</option>
       {tiposRespaldos.map((tipo: any) => (
@@ -201,25 +201,22 @@ export default function SubirArchivoPage() {
       ))}
     </select>
   </div>
-
-  <div>
-    <label className="block font-medium mb-1">Seleccionar PDF</label>
-    <input
-      type="file"
-      accept="application/pdf"
-      onChange={handleFileChange}
-      className="w-full rounded-md bg-[#e0e0e0] dark:bg-[#1e1e1e] p-2 text-sm text-gray-700 dark:text-white border dark:border-gray-700"
-    />
-  </div>
 </div>
 
-      <div
-        onDrop={handleDrop}
-        onDragOver={(e) => e.preventDefault()}
-        className="w-full h-32 mt-4 flex items-center justify-center border-2 border-dashed rounded-md cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-800"
-      >
-        Arrastra tu PDF aquí
-      </div>
+      <div className="w-full h-32 mt-4 flex items-center justify-center border-2 border-dashed rounded-md cursor-pointer hover:bg-blue-100 dark:hover:bg-neutral-500"
+     onDrop={handleDrop}
+     onDragOver={(e) => e.preventDefault()}
+     onClick={() => document.getElementById('fileInput')?.click()}>
+  Arrastra tu PDF aquí o haz click para seleccionar
+  <input
+    id="fileInput"
+    type="file"
+    accept="application/pdf"
+    onChange={handleFileChange}
+    style={{ display: 'none' }} // 👈 ocultamos el input
+  />
+</div>
+
 
       {previewUrl && (
         <div className="my-4">
