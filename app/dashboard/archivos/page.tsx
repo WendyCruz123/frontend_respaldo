@@ -27,7 +27,7 @@ interface Archivo {
       nombres: string;
       paterno: string;
     } | null;
-    tipo_respaldo?: {
+    tiposRespaldo?: {
       id: string;
       nombre: string;
     } | null;
@@ -132,6 +132,7 @@ export default function ListaArchivosPage() {
               <th className="py-2 px-4">Usuario</th>
               <th className="py-2 px-4">CI</th>
               <th className="py-2 px-4">Descripción</th>
+              <th className="py-2 px-4">Tipo de archivo</th>
               <th
                 className="py-2 px-4 cursor-pointer select-none"
                 onClick={() => setOrderAsc(!orderAsc)}
@@ -152,6 +153,7 @@ export default function ListaArchivosPage() {
                 </td>
                 <td className="py-2 px-4">{archivo.respaldo?.persona?.ci ?? '---'}</td>
                 <td className="py-2 px-4">{archivo.respaldo?.descripcion ?? '---'}</td>
+                <td className="py-2 px-4">{archivo.respaldo?.tiposRespaldo?.nombre ?? '---'}</td>
                 <td className="py-2 px-4">
                   {archivo.respaldo?.fecha
                     ? new Date(archivo.respaldo.fecha).toLocaleDateString()
@@ -205,10 +207,10 @@ export default function ListaArchivosPage() {
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 w-full max-w-md text-center">
-            <h2 className="text-lg font-bold mb-4">Confirmar Eliminación</h2>
-            <p className="mb-6">¿Estás seguro que deseas eliminar el archivo <strong>{archivoAEliminar?.nombre}</strong>?</p>
+            <h2 className="text-lg dark:text-gray-950 font-semibold mb-4">Confirmar Eliminación</h2>
+            <p className="mb-6 dark:text-slate-800">¿Estás seguro que deseas eliminar el archivo <strong>{archivoAEliminar?.nombre}</strong>?</p>
             <div className="flex justify-center gap-4">
-              <Button variant="light" onPress={() => setShowDeleteModal(false)} isDisabled={isDeleting}>
+              <Button className="text-slate-950" variant="light" onPress={() => setShowDeleteModal(false)} isDisabled={isDeleting}>
                 Cancelar
               </Button>
               <Button color="danger" onPress={handleConfirmDelete} isLoading={isDeleting}>

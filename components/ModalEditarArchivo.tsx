@@ -147,7 +147,7 @@ export default function ModalEditarArchivo({
           <label className="block font-medium mb-1">CI del Usuario</label>
           <Input value={ci} onChange={(e) => setCi(e.target.value)} />
           {personas.length > 0 && (
-            <ul className="border rounded bg-white max-h-40 overflow-y-auto mt-2">
+            <ul className="border rounded bg-white dark:bg-stone-500  text-gray-950 max-h-40 overflow-y-auto mt-2">
               {personas.map((p) => (
                 <li
                   key={p.id}
@@ -169,7 +169,7 @@ export default function ModalEditarArchivo({
           <select
             value={tipoRespaldo}
             onChange={(e) => setTipoRespaldo(e.target.value)}
-            className="w-full p-2 rounded-md bg-gray-100 border"
+            className="w-full p-2 rounded-md bg-gray-100 dark:bg-stone-500  text-gray-950"
           >
             <option value="">Selecciona un tipo</option>
             {tiposRespaldos.map((tipo: any) => (
