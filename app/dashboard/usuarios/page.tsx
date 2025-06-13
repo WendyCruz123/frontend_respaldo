@@ -13,8 +13,10 @@ import ModalEditarUsuario from '@/components/ModalEditarUsuario'; // Importar Mo
 interface Persona {
   id: string;
   ci: string;
+  expedido: string; // ✅ AÑADIDO
   nombres: string;
   paterno: string;
+  materno?: string;
   celular: string;
   correo: string;
   users: {
@@ -108,7 +110,7 @@ export default function ListaUsuariosPage() {
               >
                 Nombre {orderAsc ? '🔼' : '🔽'}
               </th>
-              <th className="py-2 px-4">CI</th>
+              <th className="py-2 px-4">CI </th> 
               <th className="py-2 px-4">Celular</th>
               <th className="py-2 px-4">Rol</th>
               <th className="py-2 px-4 w-[80px] text-center">Acciones</th>
@@ -123,7 +125,9 @@ export default function ListaUsuariosPage() {
                     <span className="text-xs text-gray-500">{persona.users[0]?.email ?? '---'}</span>
                   </div>
                 </td>
-                <td className="py-2 px-4">{persona.ci ?? '---'}</td>
+                <td className="py-2 px-4">
+                  {persona.ci ?? '---'} {persona.expedido ?? ''} {/* CAMBIO */}
+                </td>
                 <td className="py-2 px-4">{persona.celular ?? '---'}</td>
                 <td className="py-2 px-4">
                   {Array.isArray(persona.users[0]?.roles)

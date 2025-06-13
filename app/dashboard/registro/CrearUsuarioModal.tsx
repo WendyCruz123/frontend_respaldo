@@ -188,61 +188,79 @@ export default function CrearUsuarioStepModal({
 
           <ModalBody>
             {step === 1 && (
-              <div className="grid grid-cols-2 gap-4">
-                <Input
-                  label="CI"
-                  value={formPersona.ci}
-                  onChange={(e) =>
-                    setFormPersona({ ...formPersona, ci: e.target.value })
-                  }
-                />
-                <Input
-                  label="Expedido"
-                  value={formPersona.expedido}
-                  onChange={(e) =>
-                    setFormPersona({
-                      ...formPersona,
-                      expedido: e.target.value,
-                    })
-                  }
-                />
-                <Input
-                  label="Nombres"
-                  value={formPersona.nombres}
-                  onChange={(e) =>
-                    setFormPersona({ ...formPersona, nombres: e.target.value })
-                  }
-                />
-                <Input
-                  label="Apellido Paterno"
-                  value={formPersona.paterno}
-                  onChange={(e) =>
-                    setFormPersona({ ...formPersona, paterno: e.target.value })
-                  }
-                />
-                <Input
-                  label="Apellido Materno"
-                  value={formPersona.materno}
-                  onChange={(e) =>
-                    setFormPersona({ ...formPersona, materno: e.target.value })
-                  }
-                />
-                <Input
-                  label="Celular"
-                  value={formPersona.celular}
-                  onChange={(e) =>
-                    setFormPersona({ ...formPersona, celular: e.target.value })
-                  }
-                />
-                <Input
-                  label="Correo"
-                  value={formPersona.correo}
-                  onChange={(e) =>
-                    setFormPersona({ ...formPersona, correo: e.target.value })
-                  }
-                />
-              </div>
-            )}
+  <div className="grid grid-cols-2 gap-4">
+    <Input
+      label="CI"
+      value={formPersona.ci}
+      onChange={(e) =>
+        setFormPersona({ ...formPersona, ci: e.target.value })
+      }
+    />
+
+    <div>
+      <label className="block font-medium mb-1">Expedido</label>
+      <select
+        value={formPersona.expedido}
+        onChange={(e) =>
+          setFormPersona({
+            ...formPersona,
+            expedido: e.target.value,
+          })
+        }
+        className="w-full p-2 rounded-md border dark:bg-gray-900 dark:border-gray-700"
+      >
+        <option value="">Seleccione...</option>
+        <option value="LP">LP - La Paz</option>
+        <option value="CB">CB - Cochabamba</option>
+        <option value="SC">SC - Santa Cruz</option>
+        <option value="OR">OR - Oruro</option>
+        <option value="PT">PT - Potosí</option>
+        <option value="CH">CH - Chuquisaca</option>
+        <option value="TJ">TJ - Tarija</option>
+        <option value="BE">BE - Beni</option>
+        <option value="PA">PA - Pando</option>
+         <option value="QR">QR</option>
+      </select>
+    </div>
+
+    <Input
+      label="Nombres"
+      value={formPersona.nombres}
+      onChange={(e) =>
+        setFormPersona({ ...formPersona, nombres: e.target.value })
+      }
+    />
+    <Input
+      label="Apellido Paterno"
+      value={formPersona.paterno}
+      onChange={(e) =>
+        setFormPersona({ ...formPersona, paterno: e.target.value })
+      }
+    />
+    <Input
+      label="Apellido Materno"
+      value={formPersona.materno}
+      onChange={(e) =>
+        setFormPersona({ ...formPersona, materno: e.target.value })
+      }
+    />
+    <Input
+      label="Celular"
+      value={formPersona.celular}
+      onChange={(e) =>
+        setFormPersona({ ...formPersona, celular: e.target.value })
+      }
+    />
+    <Input
+      label="Correo"
+      value={formPersona.correo}
+      onChange={(e) =>
+        setFormPersona({ ...formPersona, correo: e.target.value })
+      }
+    />
+  </div>
+)}
+
 
             {step === 2 && (
               <div className="grid grid-cols-2 gap-4">
