@@ -4,7 +4,7 @@ import React from "react";
 import './home.css'; // importante importar el CSS
 
 export const Content = () => {
-  const texto = 'BIENVENIDOS AL SISTEMA DE RESPALDOS DE POSGRADO';
+  const texto = 'BIENVENIDOS  AL  SISTEMA  DE  RESPALDOS  DE POSGRADO';
 
   return (
     <div className="relative w-full min-h-screen overflow-x-hidden">
