@@ -1,4 +1,5 @@
 'use client';
+import { generarReporteArchivosPDF } from '@/lib/generarReporteArchivosPDF';
 
 import { useEffect, useState } from 'react';
 import { Input, Button } from '@nextui-org/react';
@@ -124,6 +125,10 @@ export default function ListaArchivosPage() {
           }}
           
         />
+        <Button color="secondary" onPress={() => generarReporteArchivosPDF(filteredArchivos)}>
+  Generar PDF
+</Button>
+
 
       <div className="overflow-auto rounded-lg">
         <table className="w-full table-fixed border-collapse text-left">
